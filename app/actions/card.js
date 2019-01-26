@@ -6,6 +6,9 @@ export const cardActionTypes = {
   SEARCH_REQUEST: `${prefix} Search Request`,
   SEARCH_SUCCESS: `${prefix} Search Success`,
   SEARCH_ERROR: `${prefix} Search Error`
+  DETAILS_SEARCH_REQUEST: `${prefix} Details Search Error`
+  DETAILS_SEARCH_SUCCESS: `${prefix} Details Search Error`
+  DETAILS_SEARCH_ERROR: `${prefix} Details Search Error`
 };
 
 export const searchRequest = () => ({
@@ -23,7 +26,7 @@ export const searchError = () => ({
 
 export const fetchCards = searchPhrase => {
   return async dispatch => {
-    dispatch(searchRequest);
+    dispatch(searchRequest());
     const res = await fetch(
       `https://api.scryfall.com/cards/search?q=${searchPhrase}`
     );

@@ -24,7 +24,8 @@ function card(state = initialState, action) {
     }
     case cardActionTypes.SEARCH_ERROR: {
       return {
-        ...state
+        ...state,
+        isFetching: false
       };
     }
     default:
