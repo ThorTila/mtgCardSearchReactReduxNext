@@ -16,7 +16,7 @@ export default class CardDetails extends React.Component {
     const details = this.props.statusCode === 200 ? this.props.card : {};
     return (
       <Layout>
-        <Card style={{ margin: '0,auto' }}>
+        <Card style={{ margin: '0 auto' }}>
           <Image src={details.image_uris.art_crop} />
 
           <Card.Content>
