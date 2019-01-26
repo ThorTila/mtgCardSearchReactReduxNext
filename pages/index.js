@@ -18,6 +18,7 @@ export default class Home extends React.Component {
     };
     this.handleSearchPhraseChange = this.handleSearchPhraseChange.bind(this);
     this.redirectToSearchPage = this.redirectToSearchPage.bind(this);
+    this.searchRandomCard = this.searchRandomCard.bind(this);
   }
 
   handleSearchPhraseChange(e) {
@@ -30,6 +31,13 @@ export default class Home extends React.Component {
     Router.push({
       pathname: '/search',
       query: { q: this.state.searchPhrase }
+    });
+  }
+
+  searchRandomCard() {
+    Router.push({
+      pathname: '/card',
+      query: { id: 'random' }
     });
   }
 
@@ -57,6 +65,7 @@ export default class Home extends React.Component {
                 Submit
                 <Icon name="right arrow" />
               </Button>
+              <Button onClick={this.searchRandomCard}>Random card</Button>
             </Form>
           </Container>
         </Segment>

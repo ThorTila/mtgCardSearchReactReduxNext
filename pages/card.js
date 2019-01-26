@@ -2,18 +2,18 @@ import React from 'react';
 import Layout from '../app/Layout';
 import fetch from 'node-fetch';
 import { Card, Image, Icon, Container } from 'semantic-ui-react';
+import { fetchCardDetails } from '../app/actions/card';
+import { connect } from 'react-redux';
 
-export default class CardDetails extends React.Component {
-  static async getInitialProps({ query }) {
+class CardDetails extends React.Component {
+  static async getInitialProps({ store, query }) {
     const cardID = query.id;
-    const res = await fetch(`https://api.scryfall.com/cards/${cardID}`);
-    const statusCode = res.status;
-    const card = await res.json();
-    return { card, statusCode };
+    await store.dispatch(fetchCardDetails(cardID));
+    return {};
   }
 
   render() {
-    const details = this.props.statusCode === 200 ? this.props.card : {};
+    const details = this.props.details;
     return (
       <Layout>
         <Card style={{ margin: '0 auto' }}>
@@ -37,3 +37,9 @@ export default class CardDetails extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  details: state.card.details
+});
+
+export default connect(mapStateToProps)(CardDetails);
