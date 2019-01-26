@@ -30,7 +30,6 @@ export default class Search extends React.Component {
             </Table.Row>
           ))
         : [];
-    console.log(rows);
     return (
       <Layout>
         <Table celled>
